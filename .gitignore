@@ -7,5 +7,6 @@ Thumbs.db
 *.sublime-workspace
 *.log
 yarn.lock
+docs/
 dist/
 coverage

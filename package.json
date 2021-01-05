@@ -14,6 +14,8 @@
     "webpack:analyze": "npm run webpack:profile && npx webpack-bundle-analyzer .stats.json build/browser/",
     "test": "npm run lint && gulp build:typescript && npx jest",
     "lint": "npx tslint ./src",
+    "docs": "npx trash build/docs && typedoc --exclude './node_modules/**' ./src",
+    "docs:publish": "npm run docs && gh-pages -d build/docs",
     "deploy": "npx gulp publish",
     "deploy:beta": "npx gulp publish:beta",
     "release": "npm run lint && standard-version",
@@ -25,7 +27,8 @@
     "debug": "^4.3.1",
     "file-type": "^12.4.2",
     "isutf8": "^3.1.1",
-    "magic-bytes.js": "^1.0.0"
+    "magic-bytes.js": "^1.0.0",
+    "trash-cli": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

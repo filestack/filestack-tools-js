@@ -14,8 +14,8 @@ const del = require('del');
 
 
 // DEPLOYMENT CONFIGURATION OPTIONS
-const source = ['dist/browser/*.min.js', 'dist/browser/*.min.js.map', 'dist/browser/*.css', 'dist/browser/*.json']; // source for deploy
-const sourceSRI = ['dist/browser/*.min.js', 'dist/browser/*.css']; // source for sri generation
+const source = ['dist/browser/*.js', 'dist/browser/*.js.map', 'dist/browser/*.css', 'dist/browser/*.json']; // source for deploy
+const sourceSRI = ['dist/browser/*.js', 'dist/browser/*.css']; // source for sri generation
 const bucket = 'static.filestackapi.com' // upload bucked
 const putObjectParams = {
   ACL: 'public-read'

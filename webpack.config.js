@@ -13,7 +13,7 @@ module.exports = {
     libraryTarget: 'umd',
     library: 'filestack-tools',
     path: path.resolve(__dirname, 'dist/browser'),
-    filename: 'filestack-tools.js',
+    filename: 'filestack-tools.min.js',
   },
   plugins: [
     new webpack.ProgressPlugin(),
