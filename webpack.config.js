@@ -4,7 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: './dist/module/index.js',
+  entry: './dist/module/src/index.js',
   node: { Buffer: false, fs: 'empty', assert: 'empty' },
   watchOptions: {
     ignored: /node_modules/

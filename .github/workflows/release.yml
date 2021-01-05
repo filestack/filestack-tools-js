@@ -1,7 +1,7 @@
-name: filestack-transforms-ui
+name: filestack-js-tools
 on:
   push:
-    branches: [ develop ]
+    branches: [ develop, feature/initial ]
   create:
     tags:
       - v*
@@ -20,9 +20,9 @@ jobs:
     - name: Setup repository env
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@filepicker'
+        node-version: '14.x'
+        registry-url: "https://registry.npmjs.org"
+        scope: '@filestack'
     - name: Install deps
       run: npm install
       env:

@@ -1,4 +1,6 @@
 /* eslint-disable */
+/* istanbul ignore file */
+
 import { slice, copy, alloc, from } from './node/buffer';
 
 const toHex = (num: number) => {

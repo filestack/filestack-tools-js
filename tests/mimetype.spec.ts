@@ -1,4 +1,4 @@
-import { extensionToMime, getMimetype } from './../src/mimetype';
+import { extensionToMime, getMimetype, isAcceptable } from './../src/mimetype';
 import { loadAsset } from './tools';
 
 describe('mimetype', () => {
@@ -35,6 +35,18 @@ describe('mimetype', () => {
       {
         path: 'common/sample.svg',
         expectedMime: 'application/xml',
+      },
+      {
+        path: 'common/sample.txt',
+        expectedMime: 'text/plain',
+      },
+      {
+        path: 'common/noext',
+        expectedMime: 'text/plain',
+      },
+      {
+        path: 'common/sample.undefined',
+        expectedMime: 'image/gif',
       },
     ];
 
@@ -102,6 +114,48 @@ describe('mimetype', () => {
       it(`should return ${el.expected} for ${el.input}`, () => {
         expect(extensionToMime(el.input)).toEqual(el.expected);
       });
+    });
+  });
+
+  describe('isAccetable', () => {
+    it('should accept mimetypes from list', () => {
+      const acceptList = ['image/jpeg', 'image/png', 'text/html'];
+
+      expect(isAcceptable('image/jpeg', acceptList)).toBeTruthy();
+      expect(isAcceptable('image/jpg', acceptList)).toBeTruthy();
+      expect(isAcceptable('image/png', acceptList)).toBeTruthy();
+      expect(isAcceptable('text/html', acceptList)).toBeTruthy();
+    });
+
+    it('should accept mimetypes from list with wildcard', () => {
+      const acceptList = ['image/*', 'video/*', 'audio/*', 'application/*', 'text/*'];
+
+      expect(isAcceptable('image/jpeg', acceptList)).toBeTruthy();
+      expect(isAcceptable('image/png', acceptList)).toBeTruthy();
+
+      expect(isAcceptable('video/mpeg', acceptList)).toBeTruthy();
+
+      expect(isAcceptable('audio/mp3', acceptList)).toBeTruthy();
+
+      expect(isAcceptable('application/pdf', acceptList)).toBeTruthy();
+
+      expect(isAcceptable('text/plain', acceptList)).toBeTruthy();
+    });
+
+    it('should respect string accept argument', () => {
+      expect(isAcceptable('image/jpeg', 'image/jpeg')).toBeTruthy();
+    });
+
+    it('should extract mimetype from file extension', () => {
+      expect(isAcceptable('test_image.jpg', 'image/jpeg')).toBeTruthy();
+    });
+
+    it('should return true if extension is not recognized', () => {
+      expect(isAcceptable('test_image', 'image/jpeg')).toBeTruthy();
+    });
+
+    it('should return false if extension is not recognized and flag is set to false', () => {
+      expect(isAcceptable('test_image', 'image/jpeg', false)).toBeFalsy();
     });
   });
 });

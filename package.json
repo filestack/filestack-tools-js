@@ -1,11 +1,11 @@
 {
-  "name": "filestack-tools",
+  "name": "@filestack/tools",
   "version": "1.0.0",
   "private": true,
   "description": "Tools used by filestack",
-  "main": "dist/main/index.js",
-  "module": "dist/module/index.js",
-  "browser": "dist/browser/filestack.esm.js",
+  "main": "dist/main/src/index.js",
+  "module": "dist/module/src/index.js",
+  "browser": "dist/browser/filestack-tools.js",
   "scripts": {
     "start": "npm run build:watch",
     "build": "npx gulp build",

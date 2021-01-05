@@ -32,7 +32,7 @@
   "noUnusedParameters": true,
   "include": [
     "src/**/*.ts",
-    "tests/**/*.ts",
+    "tests/**/*.ts", "src/helpers/exifOrientation.js",
   ],
   "exclude": [
     "node_modules"

@@ -34,7 +34,7 @@ export const extensionToMime = (ext: string) => {
 };
 
 /**
- * Check if input is a svg
+ * Get file mimetype
  *
  * @param {Uint8Array | Buffer} file
  * @returns {string} - mimetype

@@ -1,29 +1,31 @@
 /* eslint no-bitwise: ["error", { "allow": ["&"] }] */
+/* istanbul ignore file */
+/* tslint:disable */
 
-const toHexString = (byteArray) => {
+const toHexString = (byteArray: Uint8Array) => {
   let s = '0x';
   byteArray.forEach((byte) => {
-    s += (`0${(byte & 0xFF).toString(16)}`).slice(-2);
+    s += `0${(byte & 0xff).toString(16)}`.slice(-2);
   });
   return s;
 };
 
-const findExifPosition = (fileBuffer) => {
+const findExifPosition = (fileBuffer: ArrayBuffer) => {
   const dataView = new DataView(fileBuffer);
   const length = fileBuffer.byteLength;
-  const position = {};
+  const position: any = {};
   let marker;
   let offset = 2;
   let start;
   let end;
 
-  if ((dataView.getUint8(0) !== 0xFF) || (dataView.getUint8(1) !== 0xD8)) {
+  if (dataView.getUint8(0) !== 0xff || dataView.getUint8(1) !== 0xd8) {
     // Not a valid jpeg
     return;
   }
 
   while (offset < length) {
-    if (dataView.getUint8(offset) !== 0xFF) {
+    if (dataView.getUint8(offset) !== 0xff) {
       // console.log("Not a valid marker at offset " + offset + ", found: " + dataView.getUint8(offset));
       // Not a valid marker, something is wrong in the image structure. Better to terminate.
       return;
@@ -33,7 +35,7 @@ const findExifPosition = (fileBuffer) => {
     start = offset;
     end = offset + 2 + dataView.getUint16(offset + 2);
 
-    if (marker >= 0xE1 && marker <= 0xEF) {
+    if (marker >= 0xe1 && marker <= 0xef) {
       // APPn marker found!
       if (position.startOffset === undefined) {
         position.startOffset = start;
@@ -43,7 +45,7 @@ const findExifPosition = (fileBuffer) => {
       // We already collected some data, and now stumbled upon non-exif marker,
       // what means we have everything what we wanted.
       return position; // eslint-disable-line consistent-return
-    } else if (marker === 0xDA) {
+    } else if (marker === 0xda) {
       // We didn't find any data and after this marker all metadata has been read.
       // No point in searching further.
       return;
@@ -53,11 +55,11 @@ const findExifPosition = (fileBuffer) => {
   }
 };
 
-const findWhereExifCanBePut = (fileBuffer) => {
+const findWhereExifCanBePut = (fileBuffer: ArrayBuffer) => {
   const dataView = new DataView(fileBuffer);
-  const sof0Marker = 0xC0;
-  const sof2Marker = 0xC2;
-  const app0Marker = 0xE0;
+  const sof0Marker = 0xc0;
+  const sof2Marker = 0xc2;
+  const app0Marker = 0xe0;
   const length = fileBuffer.byteLength;
   let offset = 2;
   let marker;
@@ -83,7 +85,7 @@ const findWhereExifCanBePut = (fileBuffer) => {
   return position;
 };
 
-const extractFrom = (fileBuffer) => {
+const extractFrom = (fileBuffer: ArrayBuffer) => {
   const position = findExifPosition(fileBuffer);
 
   if (!position) {
@@ -93,7 +95,7 @@ const extractFrom = (fileBuffer) => {
   return fileBuffer.slice(position.startOffset, position.endOffset);
 };
 
-const overwriteInFile = (targetFile, exifChunk) => {
+const overwriteInFile = (targetFile: ArrayBuffer, exifChunk: any) => {
   let targetExifPosition = findExifPosition(targetFile);
   if (!targetExifPosition) {
     targetExifPosition = findWhereExifCanBePut(targetFile);
@@ -116,7 +118,7 @@ const overwriteInFile = (targetFile, exifChunk) => {
 };
 
 // add orientation to file exif data
-const generateExifOrientation = (orientation = 1) => {
+const generateExifOrientation = (orientation: number = 1) => {
   const standartExifString = 'ffe100004578696600004d4d002a0000000800010112000300000001000000000000';
   const exifBuffer = new Uint8Array(standartExifString.length / 2);
 
@@ -131,7 +133,7 @@ const generateExifOrientation = (orientation = 1) => {
   return dw.buffer;
 };
 
-const findExifStartPosition = (file) => {
+const findExifStartPosition = (file: ArrayBuffer) => {
   const view = new DataView(file);
   const length = view.byteLength;
   let offset = 2;
@@ -159,9 +161,9 @@ const findExifStartPosition = (file) => {
 
       // eslint-disable-next-line
       for (let i = 0; i < tags; i++) {
-        if (view.getUint16(offset + (i * 12), little) === 0x0112) {
+        if (view.getUint16(offset + i * 12, little) === 0x0112) {
           return {
-            offset: offset + (i * 12) + 8,
+            offset: offset + i * 12 + 8,
             endian: little,
           };
         }
@@ -177,7 +179,7 @@ const findExifStartPosition = (file) => {
   return false;
 };
 
-const getOrientation = (file) => {
+const getOrientation = (file: ArrayBuffer) => {
   const view = new DataView(file);
   const exifPosition = findExifStartPosition(file);
 
@@ -189,7 +191,7 @@ const getOrientation = (file) => {
 };
 
 // method replace exif orientation with current one
-const setOrientation = (file, orientation) => {
+const setOrientation = (file: Buffer, orientation: any) => {
   const exifPosition = findExifStartPosition(file);
 
   if (!exifPosition) {
@@ -202,11 +204,4 @@ const setOrientation = (file, orientation) => {
   return view.buffer;
 };
 
-export default {
-  toHexString,
-  extractFrom,
-  overwriteInFile,
-  setOrientation,
-  getOrientation,
-  generateExifOrientation,
-};
+export { toHexString, extractFrom, overwriteInFile, setOrientation, getOrientation, generateExifOrientation };
