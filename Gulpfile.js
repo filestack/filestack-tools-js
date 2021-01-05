@@ -14,8 +14,8 @@ const del = require('del');
 
 
 // DEPLOYMENT CONFIGURATION OPTIONS
-const source = ['dist/*.min.js', 'dist/*.min.js.map', 'dist/*.css', 'dist/*.json']; // source for deploy
-const sourceSRI = ['dist/*.min.js', 'dist/*.css']; // source for sri generation
+const source = ['dist/browser/*.min.js', 'dist/browser/*.min.js.map', 'dist/browser/*.css', 'dist/browser/*.json']; // source for deploy
+const sourceSRI = ['dist/browser/*.min.js', 'dist/browser/*.css']; // source for sri generation
 const bucket = 'static.filestackapi.com' // upload bucked
 const putObjectParams = {
   ACL: 'public-read'
@@ -57,12 +57,6 @@ const uploadFile = (version, CacheControl) => {
   })
 }
 
-// gulp.task('serve-prod', serve({
-//   root: ['tests/html', 'dist'],
-//   index: 'index.html',
-//   port: 8080,
-// }));
-
 gulp.task('build:clean', () => del(['dist/**/*']));
 
 gulp.task('typescript:main', () => {
@@ -95,11 +89,11 @@ gulp.task('build:webpack:prod', () => {
 gulp.task('sri', () => {
   return gulp.src(sourceSRI)
     .pipe(sri({
-      fileName: 'dist/manifest.json',
+      fileName: 'dist/browser/manifest.json',
       transform: (o) => {
         let newOb = {};
         for (const el in o) {
-          newOb[el.replace('dist/', '')] = { sri: o[el] };
+          newOb[el.replace('dist/browser/', '')] = { sri: o[el] };
         };
 
         return newOb;
