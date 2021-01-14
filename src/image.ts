@@ -23,7 +23,7 @@ export interface FilterJpegOptions {
 export const filterJpeg = (file: Buffer, options: FilterJpegOptions) => {
   let orientation;
 
-  if (options.keepOrientation) {
+  if (options.removeExif && options.keepOrientation) {
     orientation = getOrientation(file.buffer) || 1;
   }
 
