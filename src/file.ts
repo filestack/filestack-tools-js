@@ -1,5 +1,11 @@
 /* tslint:disable no-var-requires */
+/**
+ * @private
+ */
 const fileType = require('file-type');
+/**
+ * @private
+ */
 const isUtf8 = require('isutf8');
 /* tslint:enable no-var-requires */
 
@@ -9,21 +15,26 @@ import { getOrientation, generateExifOrientation, overwriteInFile } from './help
 
 /**
  * Filter Options
+ * @property removeICCandAPP - remove some application data like photoshop etc
+ * @property removeImage - remove image data
+ * @property comment - add image comment
+ * @property filter - enable filtring
+ * @property removeExif - remove exif data
+ * @property keepOrientation - if remove exif is enabled - we can keep image orientation
  */
 export interface FilterJpegOptions {
-  removeICCandAPP?: boolean; // remove some application data like photoshop etc
-  removeImage?: boolean; // remove image data
-  comment?: string | null; // add comment
-  filter?: boolean; // enable filters
-  removeExif?: boolean; // filter exif data
+  removeICCandAPP?: boolean;
+  removeImage?: boolean;
+  comment?: string | null;
+  filter?: boolean;
+  removeExif?: boolean;
   keepOrientation?: boolean;
-  // removeComments?: boolean; // filter comments @todo check it
 }
 
 /**
  * Filter JPEG/TIFF data
  *
- * @param file {Buffer|Unit8Array} - File buffer or Unit8Array with image
+ * @param {Uint8Array | Buffer} - File buffer or Unit8Array with image
  * @param options {FilterJpegOptions} - filter options
  */
 export const filterJpeg = (file: Buffer, options: FilterJpegOptions) => {
@@ -50,6 +61,7 @@ export const filterJpeg = (file: Buffer, options: FilterJpegOptions) => {
 
 /**
  * Change extension to according mimetype using ext=>mimetype map
+ *
  *
  * @param ext {string} - extension to convert
  * @return string|boolean

@@ -2,29 +2,33 @@
   <a href="https://www.filestack.com"><img src="https://static.filestackapi.com/filestack.svg?refresh" align="center" width="250" /></a>
 </p>
 <p align="center">
-  <strong>Javascript tools used by filestack ecosystem</strong>
-</p>
-<p align="center">
-  <!-- <a href="https://codecov.io/gh/filestack/filestack-js">
-    <img src="https://codecov.io/gh/filestack/filestack-js/branch/master/graph/badge.svg" />
-  </a> -->
-
-  <!-- <a href="https://travis-ci.org/filestack/filestack-js">
-    <img src="https://travis-ci.org/filestack/filestack-js.svg?branch=master" />
-  </a> -->
-</p>
-<p align="center">
-  <!-- <a href="https://npmjs.com/package/filestack-js"><img src="https://img.shields.io/npm/v/filestack-js.svg" /></a> -->
-  <!-- <a href="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"><img src="https://img.badgesize.io/https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js?compression=gzip&color=green" /></a> -->
-  <!-- <a href="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"><img src="https://img.badgesize.io/https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js?color=green" /></a> -->
-  <!-- <img src="https://img.shields.io/badge/module%20formats-umd%2C%20esm%2C%20cjs-green.svg" /> -->
+  <strong>Javascript tools used by filestack</strong>
 </p>
 <hr/>
 
-**Table of Contents**
+- [Api Documentation](#api-documentation)
+- [Tools included](#tools-included)
+- [How to use](#how-to-use)
+- [Versioning](#versioning)
+- [Contributing](#contributing)
 
-- [Functions](#functions)
+### Api Documentation
+Api documentations is available on <a href="https://filestack.github.io/js-filestack-tools">github pages</a>
 
-## Tools included
-
+### Tools included
 - file - file manipulation tools like exif removal, mimetypes operations etc
+  - filterJpeg - filter jpeg file metadata
+  - extensionToMime - convert extension to mimetype
+  - getMimetype - returns mimetype based on magicbytes and extension
+  - isAcceptable - checks if ext or mime is in acceptable array
+
+### How to use
+
+
+### Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags](https://github.com/filestack/js-filestack-tools/tags) on this repository.
+
+### Contributing
+
+We follow the [conventional commits](https://conventionalcommits.org/) specification to ensure consistent commit messages and changelog formatting.
