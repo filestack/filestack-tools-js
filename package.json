@@ -37,7 +37,7 @@
     "@types/node": "^14.14.13",
     "@types/webpack": "^4.41.25",
     "@types/webpack-env": "^1.16.0",
-    "@webpack-cli/init": "^1.0.3",
+    "@webpack-cli/init": "^1.1.2",
     "aws-sdk": "^2.806.0",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
