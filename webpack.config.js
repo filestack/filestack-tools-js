@@ -10,7 +10,7 @@ module.exports = {
     ignored: /node_modules/
   },
   output: {
-    libraryTarget: 'umd',
+    libraryTarget: 'window',
     library: 'filestackTools',
     path: path.resolve(__dirname, 'dist/browser'),
     filename: 'filestack-tools.min.js',
