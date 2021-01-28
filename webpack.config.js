@@ -11,7 +11,7 @@ module.exports = {
   },
   output: {
     libraryTarget: 'umd',
-    library: 'filestack-tools',
+    library: 'filestackTools',
     path: path.resolve(__dirname, 'dist/browser'),
     filename: 'filestack-tools.min.js',
   },
