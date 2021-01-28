@@ -33,6 +33,9 @@ const currentBranch = git.branch();
 
 try {
   currentTag = git.tag();
+  if (currentTag.indexOf('v') !== 0) {
+    currentTag = undefined;
+  }
 } catch(e) {
   console.log('Current Git Tag not found. Beta will be released');
 }
