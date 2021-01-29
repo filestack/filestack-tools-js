@@ -19,7 +19,7 @@
 - [Contributing](#contributing)
 
 ## Api Documentation
-Api documentations is available on <a href="https://filestack.github.io/js-filestack-tools">github pages</a>
+Api documentations is available on <a href="https://filestack.github.io/filestack-tools-js">github pages</a>
 
 ## Tools included
 - file - file manipulation tools like exif removal, mimetypes operations etc
