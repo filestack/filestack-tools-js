@@ -1,0 +1,203 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@filestack/tools</title>
+	<meta name="description" content="Documentation for @filestack/tools">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@filestack/tools</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>Project @filestack/tools</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p align="center">
+					<a href="https://www.filestack.com"><img src="https://static.filestackapi.com/filestack.svg?refresh" align="center" width="250" /></a>
+				</p>
+				<p align="center">
+					<strong>Javascript tools used by filestack</strong>
+				</p>
+				<hr/>
+				<ul>
+					<li><a href="#api-documentation">Api Documentation</a></li>
+					<li><a href="#tools-included">Tools included</a></li>
+					<li><a href="#how-to-use">How to use</a><ul>
+							<li><a href="#nodejs">NodeJS</a></li>
+							<li><a href="#browsers">Browsers</a><ul>
+									<li><a href="#es-module">ES module</a></li>
+									<li><a href="#umd-module">UMD module</a></li>
+									<li><a href="#sri">SRI</a></li>
+								</ul>
+							</li>
+							<li><a href="#rollup-support">Rollup support</a></li>
+						</ul>
+					</li>
+					<li><a href="#versioning">Versioning</a></li>
+					<li><a href="#contributing">Contributing</a></li>
+				</ul>
+				<a href="#api-documentation" id="api-documentation" style="color: inherit; text-decoration: none;">
+					<h2>Api Documentation</h2>
+				</a>
+				<p>Api documentations is available on <a href="https://filestack.github.io/filestack-tools-js">github pages</a></p>
+				<a href="#tools-included" id="tools-included" style="color: inherit; text-decoration: none;">
+					<h2>Tools included</h2>
+				</a>
+				<ul>
+					<li>file - file manipulation tools like exif removal, mimetypes operations etc<ul>
+							<li>filterJpeg - filter jpeg file metadata</li>
+							<li>extensionToMime - convert extension to mimetype</li>
+							<li>getMimetype - returns mimetype based on magicbytes and extension</li>
+							<li>isAcceptable - checks if ext or mime is in acceptable array</li>
+						</ul>
+					</li>
+				</ul>
+				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
+					<h2>How to use</h2>
+				</a>
+				<a href="#nodejs" id="nodejs" style="color: inherit; text-decoration: none;">
+					<h3>NodeJS</h3>
+				</a>
+				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">filterJpeg</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;filestack-tools&#039;</span><span style="color: #000000">;</span>
+<span style="color: #795E26">filterJpeg</span><span style="color: #000000">(</span><span style="color: #0070C1">FILE_BUFFER</span><span style="color: #000000">, </span><span style="color: #001080">options</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#browsers" id="browsers" style="color: inherit; text-decoration: none;">
+					<h3>Browsers</h3>
+				</a>
+				<a href="#es-module" id="es-module" style="color: inherit; text-decoration: none;">
+					<h4>ES module</h4>
+				</a>
+				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">filterJpeg</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;filestack-tools&#039;</span><span style="color: #000000">;</span>
+<span style="color: #795E26">filterJpeg</span><span style="color: #000000">(</span><span style="color: #0070C1">BLOB</span><span style="color: #000000">, </span><span style="color: #001080">options</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#umd-module" id="umd-module" style="color: inherit; text-decoration: none;">
+					<h4>UMD module</h4>
+				</a>
+				<pre><code class="language-HTML"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;//static.filestackapi.com/filestack-tools/{MAJOR_VERSION}.x.x/filestack-tools.min.js&quot;</span><span style="color: #000000FF"> </span><span style="color: #FF0000">crossorigin</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;anonymous&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+<span style="color: #800000">&lt;script&gt;</span>
+<span style="color: #000000FF">  </span><span style="color: #0000FF">const</span><span style="color: #000000FF"> </span><span style="color: #0070C1">filterJpeg</span><span style="color: #000000FF"> </span><span style="color: #000000">=</span><span style="color: #000000FF"> </span><span style="color: #001080">filestackTools</span><span style="color: #000000FF">.</span><span style="color: #795E26">filterJpeg</span><span style="color: #000000FF">(</span><span style="color: #0070C1">FILE</span><span style="color: #000000FF">);</span>
+<span style="color: #800000">&lt;/script&gt;</span>
+</code></pre>
+				<p>where <code>{MAJOR_VERSION}</code> is one of the MAJOR versions of the filestack-js ie:</p>
+				<pre><code class="language-HTML"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;//static.filestackapi.com/filestack-tools/3.x.x/filestack-tools.min.js&quot;</span><span style="color: #000000FF"> </span><span style="color: #FF0000">crossorigin</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;anonymous&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+<span style="color: #800000">&lt;script&gt;</span>
+<span style="color: #000000FF">  </span><span style="color: #0000FF">const</span><span style="color: #000000FF"> </span><span style="color: #0070C1">filterJpeg</span><span style="color: #000000FF"> </span><span style="color: #000000">=</span><span style="color: #000000FF"> </span><span style="color: #001080">filestackTools</span><span style="color: #000000FF">.</span><span style="color: #795E26">filterJpeg</span><span style="color: #000000FF">(</span><span style="color: #0070C1">FILE</span><span style="color: #000000FF">);</span>
+<span style="color: #800000">&lt;/script&gt;</span>
+</code></pre>
+				<a href="#sri" id="sri" style="color: inherit; text-decoration: none;">
+					<h4>SRI</h4>
+				</a>
+				<p>Subresource Integrity (SRI) is a security feature that enables browsers to verify that files they fetch (for example, from a CDN) are delivered without unexpected manipulation. It works by allowing you to provide a cryptographic hash that a fetched file must match</p>
+				<p>To obtain sri hashes for filestack-tools library check manifest.json file on CDN:</p>
+				<pre><code><span style="color: #000000">https:</span><span style="color: #008000">//static.filestackapi.com/filestack-tools/{LIBRARY_VERSION}/manifest.json</span>
+</code></pre>
+				<pre><code class="language-HTML"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;//static.filestackapi.com/filestack-tools/{LIBRARY_VERSION}/filestack-tools.min.js&quot;</span><span style="color: #000000FF"> </span><span style="color: #FF0000">integrity</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;{FILE_HASH}&quot;</span><span style="color: #000000FF"> </span><span style="color: #FF0000">crossorigin</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;anonymous&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+</code></pre>
+				<p>Where <code>{LIBRARY_VERSION}</code> is currently used library version and <code>{FILE_HASH}</code> is one of the hashes from integrity field in manifest.json file</p>
+				<a href="#rollup-support" id="rollup-support" style="color: inherit; text-decoration: none;">
+					<h3>Rollup support</h3>
+				</a>
+				<p>When using with rollup, set resolve plugin with option browser:true</p>
+				<a href="#versioning" id="versioning" style="color: inherit; text-decoration: none;">
+					<h2>Versioning</h2>
+				</a>
+				<p>We use <a href="http://semver.org/">SemVer</a> for versioning. For the versions available, see the <a href="https://github.com/filestack/js-filestack-tools/tags">tags</a> on this repository.</p>
+				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+					<h2>Contributing</h2>
+				</a>
+				<p>We follow the <a href="https://conventionalcommits.org/">conventional commits</a> specification to ensure consistent commit messages and changelog formatting.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/filterjpegoptions.html" class="tsd-kind-icon">Filter<wbr>Jpeg<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#extensiontomime" class="tsd-kind-icon">extension<wbr>ToMime</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#filterjpeg" class="tsd-kind-icon">filter<wbr>Jpeg</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#getmimetype" class="tsd-kind-icon">get<wbr>Mimetype</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#isacceptable" class="tsd-kind-icon">is<wbr>Acceptable</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
