@@ -1,7 +1,7 @@
 {
   "name": "@filestack/tools",
-  "version": "1.2.0",
-  "private": true,
+  "version": "1.2.1",
+  "private": false,
   "description": "Tools used by filestack",
   "main": "dist/main/src/index.js",
   "module": "dist/module/src/index.js",
